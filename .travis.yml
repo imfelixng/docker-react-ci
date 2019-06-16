@@ -1,0 +1,14 @@
+# copy of docker running
+# build image from Dockerfile.dev
+# run test
+# deploy
+
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t ngquangan/docker-react-ci -f Dockerfile.dev .
+
+script:
+  - docker run ngquangan/docker-react-ci npm run test -- --coverage
